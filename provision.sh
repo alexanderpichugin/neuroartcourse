@@ -131,11 +131,11 @@ if [[ $disk_space -ge 25000 ]]; then
     fi
 
     # Juggernaut XL
-    model_file=${sd_models_dir}/Reliberate.safetensors
-    model_url=https://huggingface.co/stablediffusionapi/juggernaut-xl-v5/resolve/main/Reliberate.safetensors
+    model_file=${sd_models_dir}/JuggernautXL.safetensors
+    model_url=https://civitai.com/api/download/models/198530
     
     if [[ ! -e ${model_file} ]]; then
-        printf "Downloading Reliberate...\n"
+        printf "Downloading Juggernaut XL...\n"
         download ${model_url} ${model_file} 
     fi
 
