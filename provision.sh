@@ -35,6 +35,8 @@ fi
 
 # Reactor
 printf "Setting up Reactor...\n"
+#https://github.com/Gourieff/sd-webui-reactor/raw/main/example/insightface-0.7.3-cp310-cp310-win_amd64.whl
+micromamba run -n webui
 if [[ -d sd-webui-reactor ]]; then
     (cd sd-webui-reactor && \
         git pull && \
@@ -109,6 +111,34 @@ if [[ $disk_space -ge 25000 ]]; then
         printf "Downloading Stable Diffusion XL refiner...\n"
         download ${model_url} ${model_file}
     fi
+
+    # Deliberate
+    model_file=${sd_models_dir}/Deliberate_v3.safetensors
+    model_url=https://huggingface.co/XpucT/Deliberate/resolve/main/Deliberate_v3.safetensors
+    
+    if [[ ! -e ${model_file} ]]; then
+        printf "Downloading Deliberate v3...\n"
+        download ${model_url} ${model_file} 
+    fi
+
+    # Reliberate
+    model_file=${sd_models_dir}/Reliberate.safetensors
+    model_url=https://huggingface.co/XpucT/Reliberate/resolve/main/Reliberate.safetensors
+    
+    if [[ ! -e ${model_file} ]]; then
+        printf "Downloading Reliberate...\n"
+        download ${model_url} ${model_file} 
+    fi
+
+    # Juggernaut XL
+    model_file=${sd_models_dir}/Reliberate.safetensors
+    model_url=https://huggingface.co/stablediffusionapi/juggernaut-xl-v5/resolve/main/Reliberate.safetensors
+    
+    if [[ ! -e ${model_file} ]]; then
+        printf "Downloading Reliberate...\n"
+        download ${model_url} ${model_file} 
+    fi
+
 
 else
         printf "\nSkipping extra models (disk < 30GB)\n"
@@ -185,8 +215,8 @@ fi
 
 #--- 
 
-model_file=${cn_models_dir}/ip-adapter-plus_sdxl_vit-h.safetensors
-model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors
+model_file=${cn_models_dir}/ip-adapter-plus_sdxl_vit-h.pth
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.bin
 
 if [[ ! -e ${model_file} ]]; then
     printf "Downloading SDXL IP-Adapter...\n"
@@ -195,8 +225,8 @@ fi
 
 #--- 
 
-model_file=${cn_models_dir}/ip-adapter-plus-face_sdxl_vit-h.safetensors
-model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors
+model_file=${cn_models_dir}/ip-adapter-plus-face_sdxl_vit-h.pth
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.bin
 
 if [[ ! -e ${model_file} ]]; then
     printf "Downloading SDXL IP-Adapter + face...\n"
@@ -205,8 +235,8 @@ fi
 
 #--- 
 
-model_file=${cn_models_dir}/ip-adapter-plus_sd15.safetensors
-model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors
+model_file=${cn_models_dir}/ip-adapter-plus_sd15.pth
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.pth
 
 if [[ ! -e ${model_file} ]]; then
     printf "Downloading SD 1.5 IP-Adapter...\n"
@@ -215,8 +245,8 @@ fi
 
 #--- 
 
-model_file=${cn_models_dir}/ip-adapter-plus-face_sd15.safetensors
-model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors
+model_file=${cn_models_dir}/ip-adapter-plus-face_sd15.pth
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.bin
 
 if [[ ! -e ${model_file} ]]; then
     printf "Downloading SD 1.5 IP-Adapter + face...\n"
