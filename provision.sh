@@ -80,6 +80,14 @@ else
     git https://github.com/pkuliyi2015/multidiffusion-upscaler-for-automatic1111
 fi
 
+# After Detailer
+printf "Setting up After Detailer...\n"
+if [[ -d adetailer ]]; then
+    (cd adetailer && git pull)
+else
+    git https://github.com/Bing-su/adetailer
+fi
+
 # SD Models
 
 if [[ $disk_space -ge 25000 ]]; then
@@ -172,6 +180,46 @@ model_url=https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/ma
 
 if [[ ! -e ${model_file} ]]; then
     printf "Downloading Scribble SD 1.5...\n"
+    download ${model_url} ${model_file}
+fi
+
+#--- 
+
+model_file=${cn_models_dir}/ip-adapter-plus_sdxl_vit-h.safetensors
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors
+
+if [[ ! -e ${model_file} ]]; then
+    printf "Downloading SDXL IP-Adapter...\n"
+    download ${model_url} ${model_file}
+fi
+
+#--- 
+
+model_file=${cn_models_dir}/ip-adapter-plus-face_sdxl_vit-h.safetensors
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors
+
+if [[ ! -e ${model_file} ]]; then
+    printf "Downloading SDXL IP-Adapter + face...\n"
+    download ${model_url} ${model_file}
+fi
+
+#--- 
+
+model_file=${cn_models_dir}/ip-adapter-plus_sd15.safetensors
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors
+
+if [[ ! -e ${model_file} ]]; then
+    printf "Downloading SD 1.5 IP-Adapter...\n"
+    download ${model_url} ${model_file}
+fi
+
+#--- 
+
+model_file=${cn_models_dir}/ip-adapter-plus-face_sd15.safetensors
+model_url=https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors
+
+if [[ ! -e ${model_file} ]]; then
+    printf "Downloading SD 1.5 IP-Adapter + face...\n"
     download ${model_url} ${model_file}
 fi
 
