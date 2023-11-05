@@ -111,33 +111,71 @@ model_file=${cn_models_dir}/control_sd15_canny-fp16.safetensors
 model_url=https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_canny-fp16.safetensors
 
 if [[ ! -e ${model_file} ]]; then
-    printf "Downloading Canny...\n"
+    printf "Downloading Canny SD 1.5...\n"
     download ${model_url} ${model_file}
 fi
+
+#----
+
+model_file=${cn_models_dir}/control_sdxl_canny-256lora.safetensors
+model_url=https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/sai_xl_canny_256lora.safetensors
+
+if [[ ! -e ${model_file} ]]; then
+    printf "Downloading Canny SDXL...\n"
+    download ${model_url} ${model_file}
+fi
+
+#----
 
 model_file=${cn_models_dir}/control_sd15_depth-fp16.safetensors
 model_url=https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_depth-fp16.safetensors
 
 if [[ ! -e ${model_file} ]]; then
-    printf "Downloading Depth...\n"
+    printf "Downloading Depth SD 1.5...\n"
     download ${model_url} ${model_file}
 fi
+
+#----
+
+model_file=${cn_models_dir}/control_sdxl_depth-256lora.safetensors
+model_url=https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/sai_xl_depth_256lora.safetensors
+
+if [[ ! -e ${model_file} ]]; then
+    printf "Downloading Depth SDXL...\n"
+    download ${model_url} ${model_file}
+fi
+
+#----
 
 model_file=${cn_models_dir}/control_sd15_openpose-fp16.safetensors
 model_url=https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_openpose-fp16.safetensors
 
 if [[ ! -e ${model_file} ]]; then
-    printf "Downloading Openpose...\n"
+    printf "Downloading Openpose SD 1.5...\n"
     download ${model_url} ${model_file}
 fi
+
+#----
+
+model_file=${cn_models_dir}/control_sdxl_openpose-256lora.safetensors
+model_url=https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/thibaud_xl_openpose_256lora.safetensors
+
+if [[ ! -e ${model_file} ]]; then
+    printf "Downloading Openpose SDXL...\n"
+    download ${model_url} ${model_file}
+fi
+
+#--- 
 
 model_file=${cn_models_dir}/control_sd15_scribble-fp16.safetensors
 model_url=https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_scribble-fp16.safetensors
 
 if [[ ! -e ${model_file} ]]; then
-    printf "Downloading Scribble...\n"
+    printf "Downloading Scribble SD 1.5...\n"
     download ${model_url} ${model_file}
 fi
+
+#----
 
 printf "Downloading VAE...\n"
 
